@@ -24,15 +24,15 @@ void print_tree(const char *dir_path, int depth) {
         if (lstat(path, &statbuf) == -1) continue;
 
         for (int i = 0; i < depth; i++) {
-            printf("│   ");
+            printf("|   ");
         }
 
         if (S_ISDIR(statbuf.st_mode)) {
-            printf("├── [%s]\n", entry->d_name);
+            printf("|-- [%s]\n", entry->d_name);
         
             print_tree(path, depth + 1);
         } else {
-            printf("└── %s\n", entry->d_name);
+            printf("\\-- %s\n", entry->d_name);
         }
     }
 
